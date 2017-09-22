@@ -45,11 +45,11 @@ def konvert_line_to_kotlin(swift_line):
     """
 
     # If the line doesn't start with var then its something that we don't care to convert so just return.
-    if swift_line and not str(swift_line).startswith('var'):
+    if swift_line and not str(swift_line).startswith('public var'):
         return None
 
-    var_name = swift_line[4:].split(':')[0]
-    var_type_and_val = swift_line[(4 + len(var_name) + 2):]
+    var_name = swift_line[11:].split(':')[0]
+    var_type_and_val = swift_line[(11 + len(var_name) + 2):]
 
     serialized_name = cap_first_letter(var_name)
     k_type = un_swiftify(var_type_and_val)
